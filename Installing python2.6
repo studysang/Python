@@ -1,0 +1,24 @@
+
+# change this to latest on http://python.org/download/
+PY_TWOSIX="http://python.org/ftp/python/2.6.2/Python-2.6.2.tgz"
+
+# Required to compile anything - this is the only Ubuntu specific line
+sudo apt-get install build-essential
+
+# Download/extract the Python source file set in PY_TWOSIX
+cd /tmp/
+wget $PY_TWOSIX -O py.tgz
+gunzip py.tgz
+tar -xf py.tar
+cd Python-*
+
+# Configure, build and install it into /usr/local/python/2.6.2/
+./configure --prefix=/usr/local/python/2.6.2
+make
+sudo make install
+
+# Link python binary into /usr/local/bin/ as python2.6
+sudo ln -s /usr/local/python/2.6.2/bin/python /usr/local/bin/python2.6
+# you can also at add the directory to your $PATH rather than using sym-links
+
+<source>https://serverfault.com/questions/21112/what-is-the-fastest-way-to-install-python-2-6-on-an-ubuntu-8-04-server
